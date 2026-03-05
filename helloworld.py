@@ -1,2 +1,7 @@
 print('Xin chao the gioi')
-print('Hello world')
+class HelloWorld:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f'Xin chao {self.name}')
