@@ -1,61 +1,17 @@
-# ==========================================
-# PHẦN 1: CÁC HÀM XÂY DỰNG LƯỚI 2x2
-# ==========================================
+# Cài số hàng và cột
+Rows = 4
+Columns = 4
 
-def print_beam():
-    print('+ - - - - ' * 2 + '+')
+# Vòng lặp duyệt qua từng hàng của lưới
+for i in range(Rows): # i chạy từ 0 đến 1 (tổng cộng 2 lần, tương ứng với 2 hàng)
+    
+    # 1. In ĐƯỜNG NGANG trên cùng của hàng đó
+    # Dùng phép nhân chuỗi: lặp lại cụm '+ - - - - ' theo số cột, rồi cộng thêm dấu '+' ở cuối
+    print('+ - - - - ' * Columns + '+')
+    
+    # 2. In PHẦN THÂN dọc (gồm 4 dòng)
+    for j in range(4): # j chạy từ 0 đến 3 (tổng cộng 4 lần, tương ứng với 4 dòng của phần thân)
+        print('|         ' * Columns + '|') 
 
-def print_post():
-    print('|         ' * 2 + '|')
-
-def print_four_posts():
-    print_post()
-    print_post()
-    print_post()
-    print_post()
-
-def print_row_block():
-    print_beam()
-    print_four_posts()
-
-def print_grid_2x2():
-    print_row_block()
-    print_row_block()
-    print_beam()
-
-# ==========================================
-# PHẦN 2: CÁC HÀM XÂY DỰNG LƯỚI 4x4
-# ==========================================
-
-def print_beam_4x4():
-    print('+ - - - - ' * 4 + '+')
-
-def print_post_4x4():
-    print('|         ' * 4 + '|')
-
-def print_four_posts_4x4():
-    print_post_4x4()
-    print_post_4x4()
-    print_post_4x4()
-    print_post_4x4()
-
-def print_row_block_4x4():
-    print_beam_4x4()
-    print_four_posts_4x4()
-
-def print_grid_4x4():
-    print_row_block_4x4()
-    print_row_block_4x4()
-    print_row_block_4x4()
-    print_row_block_4x4()
-    print_beam_4x4()
-
-# ==========================================
-# PHẦN 3: GỌI HÀM ĐỂ IN RA MÀN HÌNH
-# ==========================================
-
-print("--- Grid 2x2 ---")
-print_grid_2x2()
-
-print("\n--- Grid 4x4 ---")
-print_grid_4x4()
+# 3. In ĐƯỜNG NGANG chốt lại ở dưới cùng sau khi đã vẽ xong hết các hàng
+print('+ - - - - ' * Columns + '+')
