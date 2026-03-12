@@ -20,3 +20,6 @@ print(concho1.eat("xương"))
 concho2=Concho("Mèo", "Vàng", "Cao Bằng", "vui vẻ")
 print(concho2)
 print(concho2.vayduoi())
+
+class Car:
+    def __init__ 
