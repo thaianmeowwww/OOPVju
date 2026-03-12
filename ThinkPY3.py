@@ -3,7 +3,7 @@ print("=== BÀI TẬP 2.2 - THINK PYTHON ===")
 print("\n--- Bài 1: Thể tích hình cầu ---")
 r = 5
 V = (4 / 3) * math.pi * (r ** 3)
-print("Thể tích của hình cầu có bán kính bằng 5 là: " + str(V))
+print("Thể tích của hình cầu có bán kính bằng 5 là: " + str(round(V, 2)))
 
 print("\n--- Bài 2: Chi phí bán buôn sách ---")
 gia_bia = 24.95
@@ -16,7 +16,7 @@ tong_tien_sach = gia_sau_chiet_khau * so_luong
 phi_van_chuyen = 3.00 + 0.75 * (so_luong - 1)
 tong_chi_phi = tong_tien_sach + phi_van_chuyen
 
-print("Tổng chi phí bán buôn cho 60 cuốn sách là: $" + str(tong_chi_phi))
+print("Tổng chi phí bán buôn cho 60 cuốn sách là: $" + str(round(tong_chi_phi, 2)))
 
 print("\n--- Bài 3: Thời gian chạy bộ về nhà ---")
 
