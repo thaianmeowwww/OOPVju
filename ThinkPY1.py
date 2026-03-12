@@ -6,7 +6,7 @@ time = (minutes * 60) + sec
 miles= kilo * 0.621371
 pace = time / miles
 avgspeed = miles / (time / 3600)
-print('Your time is: ' + str(time) + ' seconds')
-print('Your average speed is: ' + str(avgspeed) + ' miles per hour')
-print('Your pace is: ' + str(pace) + ' seconds per miles')
-print('Your pace is: ' + str(pace / 60) + ' minutes per miles')
+print('Your time is: ' + str(round(time, 2)) + ' seconds')
+print('Your average speed is: ' + str(round(avgspeed, 2)) + ' miles per hour')
+print('Your pace is: ' + str(round(pace, 2)) + ' seconds per miles')
+print('Your pace is: ' + str(round(pace / 60, 2)) + ' minutes per miles')
