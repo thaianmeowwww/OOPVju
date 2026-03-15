@@ -1,5 +1,5 @@
 #Chờ hiểu bài
-class Point:
+class Point: #Lớp điểm A(x, y)
     def __init__(self):
         self.x = 0
         self.y = 0
@@ -11,7 +11,7 @@ class Point:
         self.x = int(input('Nhập x: '))
         self.y = int(input('Nhập y: '))
 
-class Circle:
+class Circle: #Lớp hình tròn với tâm là điểm A và bán kính r
     def __init__(self):
         self.center = Point()
         self.r = 0
@@ -35,7 +35,7 @@ class Circle:
             print('Điểm nằm trên đường tròn')
         else:
             print('Điểm nằm ngoài vòng tròn')
-class Rectangle:
+class Rectangle: #Lớp hình chữ nhật với góc trên bên trái là điểm A và góc dưới bên phải là điểm B
     def __init__(self):
         self.top_left = Point()
         self.bottom_right = Point()  
