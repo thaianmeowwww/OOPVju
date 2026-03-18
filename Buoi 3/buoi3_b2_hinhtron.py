@@ -1,71 +1,64 @@
-#Chờ hiểu bài
-class Point: #Lớp điểm A(x, y)
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-    
-    def printpoint(self):
-        print('(%d, %d)' % (self.x, self.y))
-        
-    def inputpoint(self):
-        self.x = int(input('Nhập x: '))
-        self.y = int(input('Nhập y: '))
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+class Circle:
+    def __init__(self, center, r):
+        self.center = center
+        self.r = r
 
-class Circle: #Lớp hình tròn với tâm là điểm A và bán kính r
-    def __init__(self):
-        self.center = Point()
-        self.r = 0
-
-    def printcircle(self):
-        print('Tâm: ', end='')
-        self.center.printpoint()
-        print('Bán kính: %d' % self.r)
-    
-    def inputcircle(self):
-        print('Nhập tâm: ')
-        self.center.inputpoint()
-        self.r = int(input('Nhập bán kính: '))
-    def point_in_circle(self, p):
-        input('Nhập điểm cần kiểm tra: ')
-        p.inputpoint()
+    def contains_point(self, p):
         distance = ((self.center.x - p.x) ** 2 + (self.center.y - p.y) ** 2) ** 0.5
-        if distance < self.r:
-            print('Điểm nằm trong vòng tròn')
-        elif distance == self.r:
-            print('Điểm nằm trên đường tròn')
-        else:
-            print('Điểm nằm ngoài vòng tròn')
-class Rectangle: #Lớp hình chữ nhật với góc trên bên trái là điểm A và góc dưới bên phải là điểm B
-    def __init__(self):
-        self.top_left = Point()
-        self.bottom_right = Point()  
-    def printrectangle(self):
-        print('Góc trên bên trái: ', end='')
-        self.top_left.printpoint()
-        print('Góc dưới bên phải: ', end='')
-        self.bottom_right.printpoint()
-    def inputrectangle(self):
-        print('Nhập góc trên bên trái: ')
-        self.top_left.inputpoint()
-        print('Nhập góc dưới bên phải: ')
-        self.bottom_right.inputpoint()
-    def rest_in_circle(self, c):
-        input('Nhập hình chữ nhật cần kiểm tra: ')
-        self.inputrectangle()
-        corners = [self.top_left, Point(self.bottom_right.x, self.top_left.y), self.bottom_right, Point(self.top_left.x, self.bottom_right.y)]
-        for corner in corners:
-            distance = ((c.center.x - corner.x) ** 2 + (c.center.y - corner.y) ** 2) ** 0.5
-            if distance > c.r:
-                print('Hình chữ nhật không nằm trong vòng tròn')
-                return
-        print('Hình chữ nhật nằm trong vòng tròn')   
-    def rest_circle_overlap(self, c):
-        input('Nhập hình chữ nhật cần kiểm tra: ')
-        self.inputrectangle()
-        corners = [self.top_left, Point(self.bottom_right.x, self.top_left.y), self.bottom_right, Point(self.top_left.x, self.bottom_right.y)]
-        for corner in corners:
-            distance = ((c.center.x - corner.x) ** 2 + (c.center.y - corner.y) ** 2) ** 0.5
-            if distance < c.r:
-                print('Hình chữ nhật và vòng tròn chồng lấp nhau')
-                return
-        print('Hình chữ nhật và vòng tròn không chồng lấp nhau')
+        return distance <= self.r  
+
+class Rectangle:
+    def __init__(self, top_left, bottom_right):
+        self.top_left = top_left
+        self.bottom_right = bottom_right
+
+    def get_corners(self):
+        # Lấy danh sách 4 góc của hình chữ nhật
+        return [ #kiểu list để chứa 4 góc của hình chữ nhật
+            self.top_left,
+            Point(self.bottom_right.x, self.top_left.y),
+            self.bottom_right,
+            Point(self.top_left.x, self.bottom_right.y)
+        ]
+
+    def is_inside_circle(self, c):
+        # Hình chữ nhật nằm trong hình tròn nếu TẤT CẢ 4 góc đều nằm trong hình tròn
+        for corner in self.get_corners():
+            if not c.contains_point(corner):
+                return False # Chỉ cần 1 góc lọt ra ngoài là trả về sai luôn
+        return True
+
+    def overlaps_circle(self, c):
+        # Tìm điểm gần tâm hình tròn nhất trên hình chữ nhật, sau đó đo khoảng cách.
+        closest_x = max(self.top_left.x, min(c.center.x, self.bottom_right.x))
+        closest_y = max(self.top_left.y, min(c.center.y, self.bottom_right.y))
+        
+        distance = ((c.center.x - closest_x) ** 2 + (c.center.y - closest_y) ** 2) ** 0.5
+        return distance <= c.r
+
+print("--- TẠO HÌNH TRÒN ---")
+cx = int(input('Nhập x tâm: '))
+cy = int(input('Nhập y tâm: '))
+r = int(input('Nhập bán kính: '))
+my_circle = Circle(Point(cx, cy), r)
+
+print("\n--- TẠO HÌNH CHỮ NHẬT ---")
+tx = int(input('Nhập x góc trên trái: '))
+ty = int(input('Nhập y góc trên trái: '))
+bx = int(input('Nhập x góc dưới phải: '))
+by = int(input('Nhập y góc dưới phải: '))
+my_rect = Rectangle(Point(tx, ty), Point(bx, by))
+
+print("\n--- KẾT QUẢ ---")
+if my_rect.is_inside_circle(my_circle):
+    print("-> Hình chữ nhật nằm hoàn toàn trong hình tròn.")
+elif my_rect.overlaps_circle(my_circle):
+    print("-> Hình chữ nhật có giao/chồng lấp với hình tròn.")
+else:
+    print("-> Hình chữ nhật nằm hoàn toàn ngoài hình tròn.")
