@@ -1,31 +1,51 @@
-class Nhanvien:
-    LUONG_MAX=100000000.0
-    def __init__(self, name, luongCoBan=0.0,heSoLuong=1.0):
-        self._name = name
+class NhanVien:
+    LUONG_MAX = 100000000.0
+
+    def __init__(self, tenNhanVien, luongCoBan=0.0, heSoLuong=1.0):
+        self._tenNhanVien = tenNhanVien
         self._luongCoBan = luongCoBan
         self._heSoLuong = heSoLuong
-    #1. Phương thức tính lương
+    def get_tenNhanVien(self):
+        return self._tenNhanVien
+    def set_tenNhanVien(self, value):
+        self._tenNhanVien = value
+    def get_luongCoBan(self):
+        return self._luongCoBan
+    def set_luongCoBan(self, value):
+        self._luongCoBan = value
+    def get_heSoLuong(self):
+        return self._heSoLuong
+    def set_heSoLuong(self, value):
+        self._heSoLuong = value
     def tinhLuong(self):
         return self._luongCoBan * self._heSoLuong
-    #2. Phương thức hiển thị thông tin nhân viên
-    def hienThiThongTin(self):
-        print(f"Tên nhân viên: {self._name}")
-        print(f"Lương cơ bản: {self._luongCoBan}")
+
+    def inTTin(self):
+        print(f"Tên nhân viên: {self._tenNhanVien}")
+        print(f"Lương cơ bản: {self._luongCoBan:,.0f}")
         print(f"Hệ số lương: {self._heSoLuong}")
-        print(f"Lương thực nhận: {self.tinhLuong()}")
-    #3. Phương thức tăng lương
-    def tangLuong(self, q):
-        luongMoi = self._luongCoBan * (self._heSoLuong + q)
-        if luongMoi > Nhanvien.LUONG_MAX:
-            print("Lương mới vượt quá mức lương tối đa. Không thể tăng lương.")
+        print(f"Lương thực nhận: {self.tinhLuong():,.0f}")
+
+    def tangLuong(self, delta):
+        luong_moi = self._luongCoBan * (self._heSoLuong + delta)
+        
+        if luong_moi > NhanVien.LUONG_MAX:
+            print("-> Lương mới vượt quá lương lớn nhất. Không thể tăng lương.")
+            return False
         else:
-            self._luongCoBan = luongMoi
-            print(f"Lương đã được tăng lên: {self._luongCoBan}")
-# Tạo một đối tượng nhân viên
-nv1 = Nhanvien("Nguyen Van A", 5000000.0, 2.0)
-# Hiển thị thông tin nhân viên
-nv1.hienThiThongTin()
-# Tăng lương cho nhân viên
-nv1.tangLuong(0.5)
-# Hiển thị thông tin nhân viên sau khi tăng lương
-nv1.hienThiThongTin()
+            self._heSoLuong += delta
+            print(f"-> Tăng lương thành công! Lương thực nhận mới: {self.tinhLuong():,.0f}")
+            return True
+
+
+nv1 = NhanVien("Thái An", 5000000.0, 2.0)
+
+nv1.inTTin()
+
+print("\nTĂNG LƯƠNG LẦN 1 ")
+ket_qua_1 = nv1.tangLuong(0.5)
+print(f"Kết quả trả về của hàm: {ket_qua_1}")
+
+print("\n TĂNG LƯƠNG LẦN 2 ")
+ket_qua_2 = nv1.tangLuong(20.0)
+print(f"Kết quả trả về của hàm: {ket_qua_2}")
