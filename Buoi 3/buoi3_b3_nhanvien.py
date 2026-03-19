@@ -3,8 +3,8 @@ class NhanVien:
 
     def __init__(self, tenNhanVien, luongCoBan=0.0, heSoLuong=1.0):
         self._tenNhanVien = tenNhanVien
-        self._luongCoBan = luongCoBan
-        self._heSoLuong = heSoLuong
+        self._luongCoBan = float(luongCoBan)
+        self._heSoLuong = float(heSoLuong)
     def get_tenNhanVien(self):
         return self._tenNhanVien
     def set_tenNhanVien(self, value):
@@ -39,7 +39,6 @@ class NhanVien:
 
 
 nv1 = NhanVien("Thái An", 5000000.0, 2.0)
-
 nv1.inTTin()
 
 print("\nTĂNG LƯƠNG LẦN 1 ")
