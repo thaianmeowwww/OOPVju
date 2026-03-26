@@ -34,9 +34,6 @@ class LineSegment:
     def __str__(self):
         return f'{self.__d1} và {self.__d2}'
 
-
-# --- PHẦN CHẠY THỬ (MAIN) CHỈ CÒN 1 DÒNG DUY NHẤT CHO MỖI ĐỐI TƯỢNG ---
-
 l1 = LineSegment()
 print(f'Đoạn thẳng l1 có điểm đầu và cuối lần lượt là: {l1}')
 
