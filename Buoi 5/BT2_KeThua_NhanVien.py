@@ -47,5 +47,5 @@ nv1 = CongTacVien("Độ Mixi", 1989, "Nam", "120 Yên Lãng, Đống Đa, Hà N
 nv1.inTTin1()
 nv2= NhanVienChinh("Thái An",2007,"Nam","Thanh Hóa",10000000,10.72,999999999,"Chuyên viên IT")
 nv2.inTTin1()
-nv3=TruongPhong("Hương Ly",2007,"Nữ","Bắc Ninh",28000000,12.3,3000000000,"26/03/2026",5000000)
+nv3=TruongPhong("Meow",2007,"Nữ","Bắc Ninh",28000000,12.3,3000000000,"26/03/2026",5000000)
 nv3.inTTin1()
