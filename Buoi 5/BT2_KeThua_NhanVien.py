@@ -26,6 +26,7 @@ class CongTacVien(NhanVien):
         super().inTTin()
         print(f'Cộng tác viên - Thời hạn hợp đồng: {self.__thoi_han_hop_dong}')
         print(f'Lương thực nhận = {self.LuongThucNhan:,.0f}')
+        print('-----------------------------------------------------------------')
 class NhanVienChinh(NhanVien):
     def __init__(self, ho_ten="", nam_sinh=0, gioi_tinh="", dia_chi="", luong_co_ban=0.0, he_so_luong=0.0, luong_toi_da=0.0,vi_tri=""):
         super().__init__(ho_ten, nam_sinh, gioi_tinh, dia_chi, luong_co_ban, he_so_luong, luong_toi_da)
@@ -33,6 +34,7 @@ class NhanVienChinh(NhanVien):
     def inTTin1(self):
         super().inTTin()
         print(f'{self.__vi_tri}')
+        print('-----------------------------------------------------------------')
 class TruongPhong(NhanVien):
     def __init__(self, ho_ten="", nam_sinh=0, gioi_tinh="", dia_chi="", luong_co_ban=0, he_so_luong=0, luong_toi_da=0, ngay_bat_dau_QL="",phu_cap_QL=0.0):
         super().__init__(ho_ten, nam_sinh, gioi_tinh, dia_chi, luong_co_ban, he_so_luong, luong_toi_da)
@@ -43,6 +45,7 @@ class TruongPhong(NhanVien):
         super().inTTin()
         print(f'Trưởng phòng- Quản lí từ: {self.ngay_bat_dau_QL}- Phụ cấp quản lí: {self.phu_cap_QL}')
         print(f'Lương thực nhận= {self.Luong_thuc_nhan:,.0f}')
+        print('-----------------------------------------------------------------')
 nv1 = CongTacVien("Độ Mixi", 1989, "Nam", "120 Yên Lãng, Đống Đa, Hà Nội", 100000, 36.6, 360000000, "12 tháng", 100000)
 nv1.inTTin1()
 nv2= NhanVienChinh("Thái An",2007,"Nam","Thanh Hóa",10000000,10.72,999999999,"Chuyên viên IT")
