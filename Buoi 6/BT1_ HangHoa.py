@@ -47,7 +47,7 @@ class HangHoa(ABC):
     #Bất cứ ai muốn làm con của HangHoa thì đều phải tự khai báo mình là loại hàng gì!
     def inTTin(self):
         return (f"[{self.loai_hang()}] {self.__ma}" 
-                f" | {self.__ten} | {self.__gia:,.0f}đ")
+                f" | {self.__ten} |Nhà sản xuất: {self.__nsx} | {self.__gia:,.0f}đ")
         #self.loai_hang(): Đợi ghi đè khi tạo class con
     def __str__(self): #Khi in ra đối tượng, sẽ tự động gọi hàm này
             return self.inTTin() 
