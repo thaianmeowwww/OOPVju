@@ -1,0 +1,4 @@
+def tinhtong(a,b):
+    return a+b
+a=tinhtong(3,4)
+print(a)
